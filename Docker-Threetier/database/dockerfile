@@ -1,0 +1,7 @@
+FROM mysql:8.1
+ENV MYSQL_DATABASE=facebook
+ENV MYSQL_ROOT_PASSWORD=pass123
+COPY init.sql /docker-entrypoint-initdb.d/
+EXPOSE 3306
+CMD ["mysqld"]
+

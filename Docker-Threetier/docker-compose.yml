@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+      website:
+          build:
+             context: ./website
+          ports:
+            - 80:80
+          volumes:
+            - ./website/myhtmlcode:/usr/share/nginx/html
+          networks:
+            - websitenet
+      application:
+          build:
+             context: ./application
+          ports:
+            - 9000:9000
+          volumes:
+            - ./application/myphpcode:/usr/share/nginx/html
+          networks:
+            - websitenet
+            - applicationnet
+      database:
+          build:
+             context: ./database
+          ports:
+            - 3306:3306
+          volumes:
+            - databackup:/var/lib/mysql
+          networks:
+            - applicationnet
+networks:
+   websitenet:
+       driver: bridge
+   applicationnet:
+       driver: bridge
+volumes:
+   databackup:
