@@ -171,3 +171,14 @@ clear
 ls
 clear
 sudo su
+clear
+ls
+cd threetier/
+ls
+cd ..
+ls
+cd dtier/
+ls
+docker images
+clear
+sudo su
